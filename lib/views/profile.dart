@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sqlite_auth_app/Components/button.dart';
 import 'package:flutter_sqlite_auth_app/Components/colors.dart';
-import 'package:flutter_sqlite_auth_app/JSON/users.dart';
+import 'package:flutter_sqlite_auth_app/model/user.dart';
 import 'package:flutter_sqlite_auth_app/Views/login.dart';
 
 class Profile extends StatelessWidget {
-  final Users? profile;
+  final User? profile;
 
   const Profile({super.key, this.profile});
 

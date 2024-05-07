@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sqlite_auth_app/Components/button.dart';
 import 'package:flutter_sqlite_auth_app/Components/colors.dart';
 import 'package:flutter_sqlite_auth_app/Components/textfield.dart';
-import 'package:flutter_sqlite_auth_app/JSON/users.dart';
+import 'package:flutter_sqlite_auth_app/model/user.dart';
 import 'package:flutter_sqlite_auth_app/Views/profile.dart';
 import 'package:flutter_sqlite_auth_app/Views/signup.dart';
 
-import '../SQLite/database_helper.dart';
+import '../sqlite//database_helper.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -30,8 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
   //Login Method
   //We will take the value of text fields using controllers in order to verify whether details are correct or not
   login()async{
-    Users? usrDetails = await db.getUser(usrName.text);
-    var res = await db.authenticate(Users(usrName: usrName.text, password: password.text));
+    User? usrDetails = await db.getUser(usrName.text);
+    var res = await db.authenticate(User(usrName: usrName.text, password: password.text));
     if(res == true){
       //If result is correct then go to profile or home
       if(!mounted)return;

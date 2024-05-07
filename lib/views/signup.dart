@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sqlite_auth_app/Components/button.dart';
 import 'package:flutter_sqlite_auth_app/Components/colors.dart';
 import 'package:flutter_sqlite_auth_app/Components/textfield.dart';
-import 'package:flutter_sqlite_auth_app/JSON/users.dart';
+import 'package:flutter_sqlite_auth_app/model/user.dart';
 import 'package:flutter_sqlite_auth_app/Views/login.dart';
 
 import '../SQLite/database_helper.dart';
@@ -26,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final db = DatabaseHelper();
 
   signUp()async{
-    var res = await db.createUser(Users(fullName: fullName.text,email: email.text,usrName: usrName.text, password: password.text));
+    var res = await db.createUser(User(fullName: fullName.text,email: email.text,usrName: usrName.text, password: password.text));
     if(res>0){
       if(!mounted)return;
       Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
@@ -67,10 +67,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>const LoginScreen()));
                         },
-                        child: Text("LOGIN"))
+                        child: const Text("LOGIN"))
                   ],
                 )
-
               ],
             ),
           ),
