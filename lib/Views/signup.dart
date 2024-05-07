@@ -8,6 +8,7 @@ import 'package:flutter_sqlite_auth_app/Views/login.dart';
 import '../SQLite/database_helper.dart';
 
 class SignupScreen extends StatefulWidget {
+
   const SignupScreen({super.key});
 
   @override
@@ -23,6 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
   final db = DatabaseHelper();
+
   signUp()async{
     var res = await db.createUser(Users(fullName: fullName.text,email: email.text,usrName: usrName.text, password: password.text));
     if(res>0){
@@ -30,6 +32,8 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context)=> const LoginScreen()));
     }
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +57,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 InputField(hint: "Re-enter password", icon: Icons.lock, controller: confirmPassword,passwordInvisible: true),
 
                 const SizedBox(height: 10),
-                Button(label: "SIGN UP", press: (){
-                  signUp();
-                }),
+                Button(label: "SIGN UP", press: () => signUp()),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -8,11 +8,14 @@ class InputField extends StatelessWidget {
   final IconData icon;
   final bool passwordInvisible;
   final TextEditingController controller;
-  const InputField({super.key,
+
+  const InputField({
+    super.key,
     required this.hint,
     required this.icon,
     required this.controller,
-    this.passwordInvisible = false});
+    this.passwordInvisible = false
+  });
 
   @override
   Widget build(BuildContext context) {

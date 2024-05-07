@@ -12,6 +12,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     //Query width and height of device for being fit or responsive
     Size size = MediaQuery.of(context).size;
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       width: size.width *.9,

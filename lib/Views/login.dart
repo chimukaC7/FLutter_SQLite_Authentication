@@ -9,6 +9,7 @@ import 'package:flutter_sqlite_auth_app/Views/signup.dart';
 import '../SQLite/database_helper.dart';
 
 class LoginScreen extends StatefulWidget {
+
   const LoginScreen({super.key});
 
   @override
@@ -25,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isLoginTrue = false;
 
   final db = DatabaseHelper();
+
   //Login Method
   //We will take the value of text fields using controllers in order to verify whether details are correct or not
   login()async{
@@ -75,10 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 //Our login button
-                Button(label: "LOGIN", press: (){
-                login();
-
-                }),
+                Button(label: "LOGIN", press: () => login()),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +94,9 @@ class _LoginScreenState extends State<LoginScreen> {
                  // Access denied message in case when your username and password is incorrect
                 //By default we must hide it
                  //When login is not true then display the message
-                 isLoginTrue? Text("Username or password is incorrect",style: TextStyle(color: Colors.red.shade900),):const SizedBox(),
+                 isLoginTrue
+                     ? Text("Username or password is incorrect",style: TextStyle(color: Colors.red.shade900),)
+                     : const SizedBox(),
               ],
             ),
           ),
