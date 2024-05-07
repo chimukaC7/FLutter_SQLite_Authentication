@@ -30,9 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
   //Login Method
   //We will take the value of text fields using controllers in order to verify whether details are correct or not
   login()async{
+
     User? usrDetails = await db.getUser(usrName.text);
-    var res = await db.authenticate(User(usrName: usrName.text, password: password.text));
-    if(res == true){
+
+    var result = await db.authenticate(User(usrName: usrName.text, password: password.text));
+
+    if(result == true){
       //If result is correct then go to profile or home
       if(!mounted)return;
       Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(profile: usrDetails)));
@@ -43,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
